@@ -6,7 +6,6 @@ package com.yinzhi.eduplat.common.enumeration;
  * @date 2013-3-14
  */
 public enum SystemDictionaryCode {
-	
 	/**
 	 * 状态类型
 	 */

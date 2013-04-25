@@ -1,0 +1,69 @@
+.navbar-teaching{background-color: #336699; clean:both; margin:2px 0px 40px 0px; padding:10px 0px 10px 0px;}
+.footer {text-align: center;padding: 10px 0;margin-top: 70px;border-top: 1px solid #e5e5e5;background-color: #f5f5f5;}
+
+.edu-hidden{display:none;}
+
+/* 财经人首页  */
+.setting {color:#fff; margin-right:120px;}
+.setting a{ color:#fff;}
+.hottitle { border-top: 1px solid #dcdcdc; border-bottom: 1px solid #dcdcdc; clear: both; margin:0px 0px 10px 0px;}
+.hottitle { line-height: 60px; overflow: hidden; border-bottom: 1px solid #d2dceb; border-top: 1px solid #d2dceb; }
+.fl {float: left;display: inline;}
+.hottitle strong { color: #222; font-size: 15px; height: 60px; line-height: 62px; width: 80px }
+.color_red {color: #cc0000;}
+.hottitle ul { width: 580px; line-height: 26px; padding-top: 22px; *padding-top:16px;padding-bottom: 6px; float: left }
+.hottitle ul li a { font-size: 13px; padding: 2px 6px; }
+.hottitle ul li { float: left; }
+.hottitle ul li a:hover { color: #fff; background: #2f91ff; text-decoration: none }
+.hottitle ul li a.on { background: #2f91ff; color: #fff }
+
+.h{position:relative;height:30px;border-left:4px solid #336699}
+.h{position:relative;height:37px;background:#ededed}
+.h .ap{position:absolute;top:8px;right:9px}
+.tl{position:relative;left:-9px;overflow:hidden;color:#808080}
+.tl li{float:left;padding:8px 0px 0px 5px;margin:0 0 0 -1px;line-height:16px;line-height:18px\9;*line-height:18px;}
+.tl a.selected{ color:#777; text-decoration:none; font-size:14px; display:inline;}
+.tl a:hover{text-decoration: none }
+
+.h span{padding:0 20px;font-size:18px;font-family:"Microsoft YaHei",tahoma,arial,san-serif;color:#2d2d2d;line-height:37px}
+.c{padding:10px 20px 5px 60px;overflow:hidden;background:#f5f5f5;margin-bottom:10px;}
+.pack{color:#8F8F8F;overflow:visible;float:left;margin-right:20px;}
+.pack .caption{height:auto;margin-bottom:2px;max-height:36px;_height:expression(this.scrollHeight>36 ? "36px":"auto");overflow:hidden}
+.pack .txt{width:auto;padding:5px 0;overflow:hidden}
+.pack ul.info li{height:20px;overflow:hidden}
+.pack .info .inf{height:auto;max-height:36px;_height:expression(this.scrollHeight>36 ? "36px":"auto");overflow:hidden}
+
+.pack_album{width:132px;overflow:visible}
+.pack_album .pic{height:198px;border:0;position:relative;overflow:visible}
+.pack_album .pic .inner{height:198px;overflow:hidden}
+.pack_album .pic img{width:132px;height:198px}
+
+
+/* 导航器 */
+.home-title{font-size:25px;}
+
+/* 附页  */
+.secondary{margin-top:50px; font}
+.back-button.big {height: 48px;width: 48px;left: 36px;top: 40px;}
+.back-button {height: 32px;width: 32px;display: block;background-image: url('../img/back-button.png');-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;}
+.page-cnt-opeator{padding-buttom:5px;}
+.page-profile-title{font-size: 24px;color: #999;line-height: 1;padding-bottom: 11px;border-bottom: solid 2px #f2f2f2;margin-bottom:10px;}
+
+/* 当前课程  */
+.course-summary{border:1px solid #f1f0e7;border-bottom:1px solid #dad8cc;background-color:#faf9f0;word-wrap:break-word}
+.course-info{padding:25px 20px;position:relative}
+.course-info .tip-join-course-num{background-color:#fea946;position:absolute;top:-3px;right:15px;width:48px;height:50px;text-align:center;color:#fff;background-position:left -338px;}
+.course-info .tip-join-course-num p{padding-top:2px}
+.course-info img{float:left;width:132px;height:198px}
+.course-info .info-status{margin-left:150px;position:relative;top:-6px}
+.info-status h1{font-size:26px;font-weight:bold;width:510px}
+.info-status .extra-info{color:#999;line-height:20px;padding-top:5px}
+.info-status .brief{font-size:14px;line-height:22px;min-height:45px;_height:45px;word-wrap:break-word;}
+
+
+/* 考卷  */
+h3.que-type {font-size: 16px;font-weight: bold;}
+p.que-cnt{color: #666;}
+.que-answer {color: #000;text-indent: 20px;}
+.que-answer2 {color: #CC0000;text-indent: 20px;}
+.que-answer2>span,.que-answer>span{font-weight: bold;}

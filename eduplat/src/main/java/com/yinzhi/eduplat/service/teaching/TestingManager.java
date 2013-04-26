@@ -33,8 +33,6 @@ import com.yinzhi.eduplat.entity.finance.Student;
 import com.yinzhi.eduplat.entity.finance.Testpaper;
 import com.yinzhi.eduplat.module.assignment.beans.AbstractQue;
 import com.yinzhi.eduplat.module.assignment.beans.RandomQue;
-import com.yinzhi.module.slides.util.NumberUtils;
-import com.yinzhi.module.slides.util.QuestionUtils;
 
 /**
  * 作业核心模块
@@ -137,20 +135,6 @@ public class TestingManager implements EduplatContextConstant{
 	 * @return
 	 */
 	private int judgeAss(Testpaper paper){
-		int qusKind = paper.getQueKind();
-		if(qusKind==QUS_KIND_0){
-			Questions que = questionsDao.findOne(paper.getFkQueId());//这个查询效率需要调优
-			if(que.getAnswer().equals(paper.getAnswer().trim()))
-				return 100;
-		}else if(qusKind==QUS_KIND_1){
-			// TODO 按模板出题方式评分算法
-			
-			return 0;
-		}else if(qusKind==QUS_KIND_2){
-			// TODO 按业务点出题方式评分算法
-			
-			return 0;
-		}
 		
 		return 0;
 	}
@@ -161,22 +145,6 @@ public class TestingManager implements EduplatContextConstant{
 	 */
 	private String buildAsm(String asmId){
 		StringBuffer sf = new StringBuffer();
-		Assignment asm = assignmentDao.findOne(asmId);
-		List<Assignqus> quss = asm.getAssignquss();
-		// TODO 调用出题模块
-		List<AbstractQue> aques= this.buildQus(quss);
-		int step = 0;// 计数器
-		for(int t=0; t<quss.size(); t++){
-			Assignqus qus = quss.get(t);
-			int qusNum = qus.getQueNum();
-			sf.append("<h3 class='que-type'>"+NumberUtils.numberArab2CN(t+1)+"、"+QuestionUtils.getCnType(qus.getQusType())+"</h3>");
-			for(int i=0; i<qusNum; i++){
-				sf.append("    ");
-				AbstractQue _aque = aques.get(step++);
-				// TODO 将题目从XML格式转为HTML格式
-				sf.append("<p class='que-cnt'>"+(i+1)+"、"+_aque.getContent()+"</p>");// 暂时还没做转化
-			}
-		}
 		return sf.toString();
 	}
 	
@@ -189,57 +157,6 @@ public class TestingManager implements EduplatContextConstant{
 	 */
 	private String buildAsm(String asmId, boolean onlyView, Myassign ass){
 		StringBuffer sf = new StringBuffer();
-		List<Testpaper> papers = new ArrayList<Testpaper>();
-		Assignment asm = assignmentDao.findOne(asmId);
-		List<Assignqus> quss = asm.getAssignquss();
-		// TODO 调用出题模块
-		List<AbstractQue> aques= this.buildQus(quss);
-		int step = 0;// 计数器
-		for(Assignqus qus:quss){
-			int qusNum = qus.getQueNum();
-			for(int i=0; i<qusNum; i++){
-				sf.append("    ");
-				AbstractQue _aque = aques.get(step++);
-				if(!onlyView){
-					Testpaper paper = new Testpaper();
-					paper.setContent(_aque.getContent());
-//					paper.setAnswer(_aque.getAnswer());// 应该是学生的答案，待修改
-					paper.setQueKind(qus.getQueKind());
-					paper.setQueScore(0);// 初始化得分为0分
-					paper.setQusType(qus.getQusType());
-					paper.setFkQueId(_aque.getId());// 随机出题方式，题目ID
-					paper.setMyassign(ass);
-					papers.add(paper);
-				}
-			}
-		}
-		// 学生作答时，才需要保存【学生卷子表】
-		if(!onlyView){
-			papers = testpaperDao.save(papers);
-		}else{
-			papers = ass.getTestpapers();
-		}
-		step = 0;//清空
-		for(int t=0; t<quss.size(); t++){
-			Assignqus qus = quss.get(t);
-			int qusNum = qus.getQueNum();
-			sf.append("<h3 class='que-type'>"+NumberUtils.numberArab2CN(t+1)+"、"+QuestionUtils.getCnType(qus.getQusType())+"</h3>");
-			for(int i=0; i<qusNum; i++){
-				sf.append("    ");
-				AbstractQue _aque = aques.get(step++);
-				// TODO 将题目从XML格式转为HTML格式
-				sf.append("<p class='que-cnt'>"+(i+1)+"、"+_aque.getContent()+"</p>");// 暂时还没做转化
-				Testpaper _paper = papers.get(step-1);
-				if(!onlyView||(ass.getMssStatus()!=null&&ass.getMssStatus()==MSS_STATUS_1)){
-					sf.append("<p><input type='text' name='");
-					sf.append(_paper.getId());
-					sf.append("' /></p>");
-				}else{
-					sf.append("<p class='que-answer'><span>您的回答：</span>  "+_paper.getAnswer()+"</p>");
-					sf.append("<p class='que-answer2'><span>标准答案：</span>  "+_aque.getAnswer()+"</p>");
-				}
-			}
-		}
 		return sf.toString();
 	}
 	

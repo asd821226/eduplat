@@ -57,7 +57,7 @@ import com.yinzhi.eduplat.util.EduplatCfgUtil;
  */
 @Controller
 @RequestMapping("/teaching/teacher")
-public class TeachingTecController implements EduplatContextConstant, IPowerPointConstant{
+public class TeachingTecController implements EduplatContextConstant{
 	
 	private final static Logger logger = LoggerFactory.getLogger(TeachingTecController.class);
 
@@ -247,16 +247,7 @@ public class TeachingTecController implements EduplatContextConstant, IPowerPoin
 	@ResponseBody
 	public String getChpList(HttpServletRequest request) {
 
-		String bokId = request.getParameter("bokId");
-		String chpId = request.getParameter("chpId");
-		ChapterListParser parser = new ChapterListParser(
-				EduplatCfgUtil.getValue(EDUPLAT_RESOURCE_BOOKS)
-						+ File.separator + bokId + File.separator + chpId
-						+ File.separator + EDUPLAT_PPT_XMLFILE);
-		parser.run();
-		String strJson = parser.getStrJson().toString();
-		if (strJson.endsWith(","))
-			strJson = strJson.substring(0, strJson.length() - 1);
+		String strJson = "";
 		return "[" + strJson + "]";
 
 	}
